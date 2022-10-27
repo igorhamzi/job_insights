@@ -45,11 +45,16 @@ def get_unique_industries(path):
 def filter_by_industry(jobs, industry):
     list_of_dict = jobs
 
-    filtered_industry = []
+    # filtered_industry = []
 
-    for job in list_of_dict:
-        if job['industry'] == industry:
-            filtered_industry.append(job)
+    filtered_industry = [job
+                         for job in list_of_dict
+                         if job['industry'] == industry
+                         ]
+
+    # for job in list_of_dict:
+    #    if job['industry'] == industry:
+    #        filtered_industry.append(job)
 
     return filtered_industry
 
