@@ -57,16 +57,21 @@ def filter_by_industry(jobs, industry):
 def get_max_salary(path):
     list_of_dict = read(path)
 
-    value_max_salary = 0
+    # value_max_salary = 0
 
-    for job in list_of_dict:
-        max_salary = job['max_salary']
-        if max_salary != '' and max_salary.isnumeric():
-            max_salary = int(max_salary)
-            if max_salary > value_max_salary:
-                value_max_salary = max_salary
+    list_of_salaries = [int(job['max_salary'])
+                        for job in list_of_dict
+                        if job['max_salary'].isnumeric()
+                        ]
 
-    return value_max_salary
+    # for job in list_of_dict:
+    #    max_salary = job['max_salary']
+    #    if max_salary != '' and max_salary.isnumeric():
+    #        max_salary = int(max_salary)
+    #       if max_salary > value_max_salary:
+    #            value_max_salary = max_salary
+
+    return max(list_of_salaries)
 
 
 def get_min_salary(path):
@@ -74,10 +79,10 @@ def get_min_salary(path):
 
     # value_min_salary = 1000000000000
 
-    salarios = [int(job['min_salary'])
-                for job in list_of_dict
-                if job['min_salary'].isnumeric()
-                ]
+    list_of_salaries = [int(job['min_salary'])
+                        for job in list_of_dict
+                        if job['min_salary'].isnumeric()
+                        ]
 
     # for job in list_of_dict:
     #    min_salary = job['min_salary']
@@ -86,7 +91,7 @@ def get_min_salary(path):
     #        if min_salary < value_min_salary:
     #            value_min_salary = min_salary
 
-    return min(salarios)
+    return min(list_of_salaries)
 
 
 def matches_salary_range(job, salary):
