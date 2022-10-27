@@ -16,13 +16,15 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    list_of_dict = jobs
 
-    filtered_jobs = []
+    filtered_jobs = [job
+                     for job in jobs
+                     if job['job_type'] == job_type
+                     ]
 
-    for job in list_of_dict:
-        if job['job_type'] == job_type:
-            filtered_jobs.append(job)
+    # for job in list_of_dict:
+    #    if job['job_type'] == job_type:
+    #        filtered_jobs.append(job)
 
     return filtered_jobs
 
@@ -43,12 +45,11 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    list_of_dict = jobs
 
     # filtered_industry = []
 
     filtered_industry = [job
-                         for job in list_of_dict
+                         for job in jobs
                          if job['industry'] == industry
                          ]
 
