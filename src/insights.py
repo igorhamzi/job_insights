@@ -72,42 +72,35 @@ def get_max_salary(path):
 def get_min_salary(path):
     list_of_dict = read(path)
 
-    value_min_salary = 1000000000000
+    # value_min_salary = 1000000000000
 
-    for job in list_of_dict:
-        min_salary = job['min_salary']
-        if min_salary != '' and min_salary.isnumeric():
-            min_salary = int(min_salary)
-            if min_salary < value_min_salary:
-                value_min_salary = min_salary
+    salarios = [int(job['min_salary'])
+                for job in list_of_dict
+                if job['min_salary'].isnumeric()
+                ]
 
-    return value_min_salary
+    # for job in list_of_dict:
+    #    min_salary = job['min_salary']
+    #    if min_salary != '' and min_salary.isnumeric():
+    #        min_salary = int(min_salary)
+    #        if min_salary < value_min_salary:
+    #            value_min_salary = min_salary
+
+    return min(salarios)
 
 
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
 
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
+    if ('min_salary' or 'max_salary') not in job:
+        raise ValueError
+    if (type(job['min_salary']) or type(job['max_salary'])) != int:
+        raise ValueError
+    if job['min_salary'] > job['max_salary']:
+        raise ValueError
+    if type(salary) != int:
+        raise ValueError
 
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
-
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    pass
+    return job['min_salary'] <= salary
 
 
 def filter_by_salary_range(jobs, salary):
