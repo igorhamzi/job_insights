@@ -16,21 +16,15 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
+    list_of_dict = jobs
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
+    filtered_jobs = []
 
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    for job in list_of_dict:
+        if job['job_type'] == job_type:
+            filtered_jobs.append(job)
+
+    return filtered_jobs
 
 
 def get_unique_industries(path):
@@ -145,4 +139,5 @@ if __name__ == '__main__':
     get_unique_job_types('src/jobs.csv')
     get_max_salary('src/jobs.csv')
     get_min_salary('src/jobs.csv')
+    filter_by_job_type('src/jobs.csv', 'PART_TIME')
     print(__name__)
