@@ -21,19 +21,19 @@ def test_sort_by_criteria():
         },
     ]
 
-    ranked_criteria = sorted_keys == [sorted_keys[2],
-                                      sorted_keys[1],
-                                      sorted_keys[0]]
+    sorted_jobs = [sorted_keys[2],
+                   sorted_keys[1],
+                   sorted_keys[0]]
 
     try:
         sort_by(sorted_keys, 'min_salary')
-        assert ranked_criteria
+        assert sorted_keys == sorted_jobs
 
         sort_by(sorted_keys, 'max_salary')
-        assert ranked_criteria
+        assert sorted_keys == sorted_jobs
 
         sort_by(sorted_keys, 'date_posted')
-        assert ranked_criteria
+        assert sorted_keys == sorted_jobs
 
     except ValueError:
         raise ValueError
