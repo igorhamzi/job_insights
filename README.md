@@ -3,7 +3,7 @@
 ## 📝 Introdução
 
 <div align="center">
-<img src="/.images/job.png" alt="Logo Aplicação" width="300"/>
+<img src="/images/job.png" alt="Logo Aplicação" width="300"/>
 </div>
 
   Neste projeto foi implementado análises a partir de um conjunto de dados sobre empregos, essas foram incorporadas a um aplicativo Web desenvolvido com Flask (um framework web muito popular na comunidade Python). foi também desenvolvido testes para a implementação de uma análise de dados.
